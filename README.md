@@ -9,7 +9,6 @@ To start using it, just download the file in the *build* folder (js-container.js
 How to set a parameter
 ----------------------
 
-Defining a parameter is as simple as using the Pimple instance as an array::
 
     // define a parameter
     container.set('the_parameter_name', parameterValue);
