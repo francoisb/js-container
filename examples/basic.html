@@ -1,0 +1,42 @@
+<html>
+<head>
+    <title>js-container - basic example</title>
+    <script src="../build/js-container.min.js"></script>
+</head>
+<body>
+    <script>
+        (function(JsContainer) {
+            // Create a new container
+            var container = new JsContainer();
+
+            // Set the parameter "name"
+            container.set('name', 'world');
+
+            // Set the service "hello"
+            container.setShared('hello', function(container) {
+                window.console && window.console.log && window.console.log('>>> I will be called only once!');
+
+                function helloWorld() {}
+
+                helloWorld.prototype.sayHello = function (name) {
+                    name = name || container.get('name');
+                    window.console && window.console.log && window.console.log('>>> HELLO ' + name + '!');
+                };
+
+                return new helloWorld();
+            });
+
+
+            if (window.console && window.console.log) {
+                window.console.log('>>> Is there a parameter "name"?', container.has('name'));
+                window.console.log('>>> The value of the parameter "name"?', container.get('name'));
+                window.console.log('>>> The value of the parameter "hello"?', container.get('hello'));
+                // Let's say Hello!
+                container.get('hello').sayHello('FooBar');
+                container.get('hello').sayHello();
+            }
+
+        })(window['js-container']);
+    </script>
+</body>
+</html>

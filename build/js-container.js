@@ -2,9 +2,6 @@
 "use strict";
 (function(name, dependencies, context, definition) {
 
-    context['module']['exports'] = definition.apply(context);
-    return;
-
     // CommonJS and AMD suport
     if (typeof context['module'] === 'object' && context['module']['exports']) {
         // CommonJS
