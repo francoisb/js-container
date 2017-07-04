@@ -3,7 +3,7 @@
 (function(name, dependencies, context, definition) {
 
     // CommonJS and AMD suport
-    if (typeof context['module'] === 'object' && context['module']['exports']) {
+    if (typeof context['module'] === 'object') {
         // CommonJS
         if (dependencies && context['require']) {
             for (var i = 0; i < dependencies.length; i++) {
