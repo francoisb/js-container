@@ -13,7 +13,7 @@ module.exports = function(grunt) {
         copy: {
             build: {
                 src:     'source/container.js',
-                dest:    'js-container.js',
+                dest:    'build/js-container.js',
                 options: {
                     process: function (content, srcpath) {
                         return _banner + content;
@@ -39,10 +39,18 @@ module.exports = function(grunt) {
                 files: [{
                     expand: false,
                     src:    'source/container.js',
-                    dest:   'js-container.min.js'
+                    dest:   'build/js-container.min.js'
                 }]
             }
         },
+        jasmine: {
+            src: 'source/*.js',
+            options: {
+                specs:    'tests/*Spec.js',
+                template: require('grunt-template-jasmine-nml'),
+
+            }
+        }
 
     };
 
@@ -52,7 +60,12 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks("grunt-contrib-clean");
     grunt.loadNpmTasks("grunt-contrib-copy");
     grunt.loadNpmTasks("grunt-contrib-uglify");
+    grunt.loadNpmTasks('grunt-contrib-jasmine');
 
+    // define the tasks
+    grunt.registerTask('test', 'Run js-container tests.', [
+        'jasmine'
+    ]);
     // define the tasks
     grunt.registerTask('build', 'Build js-container.', [
         'clean:build',
