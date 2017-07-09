@@ -1,10 +1,15 @@
 describe("Container", function() {
     var
         container,
-        Container = require('../source/container');
+        containerModule = require('../build/js-container');
+
+    it("should be well build", function() {
+        expect(typeof containerModule).toEqual('object');
+        expect(typeof containerModule.Container).toEqual('function');
+    });
 
     beforeEach(function() {
-        container = new Container();
+        container = new containerModule.Container();
     });
 
     it("should be able to manage a parameter", function() {

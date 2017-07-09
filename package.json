@@ -7,13 +7,9 @@
   "dependencies": {
     "grunt": "1.0.1",
     "grunt-contrib-clean": "1.0.0",
-    "grunt-contrib-copy": "1.0.0",
+    "grunt-contrib-concat": "1.0.1",
     "grunt-contrib-uglify": "2.2.0",
-    "grunt-contrib-jasmine": "1.1.0"
-  },
-  "devDependencies": {
-    "grunt-contrib-jasmine": "^1.1.0",
-    "grunt-template-jasmine-nml": "^2.0.1",
-    "jasmine": "^2.6.0"
+    "grunt-contrib-jasmine": "1.1.0",
+    "grunt-template-jasmine-nml": "2.0.1"
   }
 }

@@ -9,7 +9,6 @@ To start using it, just download the file in the *build* folder (js-container.js
 How to set a parameter
 ----------------------
 
-
     // define a parameter
     container.set('the_parameter_name', parameterValue);
 
@@ -57,11 +56,11 @@ First you need to init the node_modules (see https://gruntjs.com/getting-started
     > ./init.sh
 
 
-Then you can run the unit tests.
-
-    > grunt test
-
-
-Finally you can build the library.
+Build the library.
 
     > grunt build
+
+
+Run the unit tests.
+
+    > grunt test

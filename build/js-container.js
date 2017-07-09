@@ -26,7 +26,10 @@
 
 })('js-container', [], (this || {}), function() {
 
+    var module = {};
 
+
+module.Container = (function() {
     /**
      * Returns a closure that stores the result of the given closure for uniqueness in the scope of this instance of Container.
      *
@@ -131,4 +134,8 @@
 
 
     return Container;
+})();
+
+
+    return module;    
 });

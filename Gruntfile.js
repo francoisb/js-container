@@ -10,15 +10,18 @@ module.exports = function(grunt) {
             }
         },
 
-        copy: {
+        concat: {
             build: {
-                src:     'source/container.js',
+                src:     [
+                            'source/module.header.js',
+                            'source/container.js',
+                            'source/module.footer.js',
+                         ],
                 dest:    'build/js-container.js',
                 options: {
-                    process: function (content, srcpath) {
-                        return _banner + content;
-                    },
-                },
+                             stripBanners: true,
+                             banner:       _banner,
+                         },
             }
         },
 
@@ -38,13 +41,13 @@ module.exports = function(grunt) {
                 },
                 files: [{
                     expand: false,
-                    src:    'source/container.js',
+                    src:    'build/js-container.js',
                     dest:   'build/js-container.min.js'
                 }]
             }
         },
         jasmine: {
-            src: 'source/*.js',
+            src: 'build/js-container.js',
             options: {
                 specs:    'tests/*Spec.js',
                 template: require('grunt-template-jasmine-nml'),
@@ -58,7 +61,7 @@ module.exports = function(grunt) {
 
     // load the tasks
     grunt.loadNpmTasks("grunt-contrib-clean");
-    grunt.loadNpmTasks("grunt-contrib-copy");
+    grunt.loadNpmTasks("grunt-contrib-concat");
     grunt.loadNpmTasks("grunt-contrib-uglify");
     grunt.loadNpmTasks('grunt-contrib-jasmine');
 
@@ -69,7 +72,7 @@ module.exports = function(grunt) {
     // define the tasks
     grunt.registerTask('build', 'Build js-container.', [
         'clean:build',
-        'copy:build',
+        'concat:build',
         'uglify:build'
     ]);
 };
