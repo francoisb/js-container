@@ -1,4 +1,5 @@
 module.Container = (function() {
+
     /**
      * Returns a closure that stores the result of the given closure for uniqueness in the scope of this instance of Container.
      *
@@ -103,4 +104,5 @@ module.Container = (function() {
 
 
     return Container;
+
 })();
